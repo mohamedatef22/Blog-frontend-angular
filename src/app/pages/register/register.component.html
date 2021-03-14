@@ -1,1 +1,215 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form__container">
+    <div class="col-12 col-sm-6 mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        formControlName="firstName"
+        placeholder="First Name"
+        [class]="{
+          'is-invalid':
+            (firstName.invalid && firstName.touched) ||
+            (firstName.invalid && formSubmitted),
+          'is-valid': firstName.valid && firstName.touched
+        }"
+      />
+      <div
+        class="not__valid"
+        *ngIf="
+          (firstName.invalid && firstName.touched) ||
+          (firstName.invalid && formSubmitted) ||
+          firstName.errors?.notChar
+        "
+      >
+        <ul>
+          <li *ngIf="firstName.errors?.required">First Name is required</li>
+          <li *ngIf="firstName.errors?.minlength">
+            minimum length is 2 characters
+          </li>
+          <li *ngIf="firstName.errors?.maxlength">
+            maximum length is 10 characters
+          </li>
+          <li *ngIf="firstName.errors?.notChar">
+            First Name must not contain numbers or special characters
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        placeholder="Last Name"
+        formControlName="lastName"
+        [class]="{
+          'is-invalid':
+            (lastName.invalid && lastName.touched) ||
+            (lastName.invalid && formSubmitted),
+          'is-valid': lastName.valid && lastName.touched
+        }"
+      />
+      <div
+        class="not__valid"
+        *ngIf="
+          (lastName.invalid && lastName.touched) ||
+          (lastName.invalid && formSubmitted) ||
+          lastName.errors?.notChar
+        "
+      >
+        <ul>
+          <li *ngIf="lastName.errors?.required">Last Name is required</li>
+          <li *ngIf="lastName.errors?.minlength">
+            minimum length is 2 characters
+          </li>
+          <li *ngIf="lastName.errors?.maxlength">
+            maximum length is 10 characters
+          </li>
+          <li *ngIf="lastName.errors?.notChar">
+            Last Name must not contain numbers or special characters
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <label for="userName" class="form-label">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userName"
+        placeholder="User Name"
+        formControlName="userName"
+        [class]="{
+          'is-invalid':
+            (userName.invalid && userName.touched) ||
+            (userName.invalid && formSubmitted),
+          'is-valid': userName.valid && userName.touched
+        }"
+      />
+      <div
+        class="not__valid"
+        *ngIf="
+          (userName.invalid && userName.touched) ||
+          (userName.invalid && formSubmitted) ||
+          userName.errors?.notChar
+        "
+      >
+        <ul>
+          <li *ngIf="userName.errors?.required">User Name is required</li>
+          <li *ngIf="userName.errors?.minlength">
+            minimum length is 3 characters
+          </li>
+          <li *ngIf="userName.errors?.maxlength">
+            maximum length is 20 characters
+          </li>
+          <li *ngIf="userName.errors?.notChar">
+            User Name must not contain numbers or special char
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email address"
+        id="email"
+        formControlName="email"
+        [class]="{
+          'is-invalid':
+            (email.invalid && email.touched) ||
+            (email.invalid && formSubmitted),
+          'is-valid': email.valid && email.touched
+        }"
+      />
+      <div
+        class="not__valid"
+        *ngIf="
+          (email.invalid && email.touched) || (email.invalid && formSubmitted)
+        "
+      >
+        <ul>
+          <li *ngIf="email.errors?.required">User Name is required</li>
+          <li *ngIf="email.errors?.minlength">
+            minimum length is 5 characters
+          </li>
+          <li *ngIf="email.errors?.maxlength">
+            maximum length is 20 characters
+          </li>
+          <li *ngIf="email.errors?.email">Please enter valid email</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        id="password"
+        formControlName="password"
+        [class]="{
+          'is-invalid':
+            (password.invalid && password.touched) ||
+            (password.invalid && formSubmitted),
+          'is-valid': password.valid && password.touched
+        }"
+      />
+      <div
+        class="not__valid"
+        *ngIf="
+          (password.invalid && password.touched) ||
+          (password.invalid && formSubmitted)
+        "
+      >
+        <ul>
+          <li *ngIf="password.errors?.required">Password is required</li>
+          <li *ngIf="password.errors?.passwordNotMatch">Password Not match</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+        [class]="{
+          'is-invalid':
+            (confirmPassword.invalid && confirmPassword.touched) ||
+            (confirmPassword.invalid && formSubmitted),
+          'is-valid': confirmPassword.valid && confirmPassword.touched
+        }"
+      />
+      <div
+        class="not__valid"
+        *ngIf="
+          (confirmPassword.invalid && confirmPassword.touched) ||
+          (confirmPassword.invalid && formSubmitted)
+        "
+      >
+        <ul>
+          <li *ngIf="confirmPassword.errors?.required">Password is required</li>
+          <li *ngIf="confirmPassword.errors?.passwordNotMatch">
+            Password Not match
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="mt-3">
+      <strong>Already have Account! </strong>
+      <button type="button" routerLink="/login" class="btn btn-primary ms-2">
+        login
+      </button>
+    </div>
+  </div>
+</form>
