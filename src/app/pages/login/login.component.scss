@@ -1,0 +1,19 @@
+form {
+  .form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .not__valid {
+    background-color: #f22c2c3d;
+    margin-top: 0.4rem;
+    padding: 0.5rem;
+    font-size: small;
+  }
+}
+.danger {
+  background-color: red;
+}
