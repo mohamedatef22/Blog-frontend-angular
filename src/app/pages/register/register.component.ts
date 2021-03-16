@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { UsersService } from 'src/app/services/users.service';
 import {
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
   confirmPassword: FormControl;
 
   formSubmitted: Boolean; // show error if try to submit form
-  constructor(private _user: UsersService) {
+  constructor(private _user: UsersService, private _router: Router) {
     this.formSubmitted = false;
     this.initForm();
     this.creatForm();
@@ -79,11 +80,13 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     let user: User;
     user = this.registerForm.value;
-    console.log(this.registerForm);
     if (this.registerForm.valid) {
       this._user.register(user).subscribe(
         (data) => {
           console.log(data);
+          this._router.navigate(['confirm'], {
+            queryParams: { url: data.confirmationUrl },
+          });
         },
         (err) => {
           // TODO: Show messages for failed validation in back end

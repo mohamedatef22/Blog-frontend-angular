@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     UserComponent,
     CharsDirective,
+    ConfirmationComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
